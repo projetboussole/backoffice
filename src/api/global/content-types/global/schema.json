@@ -1,0 +1,157 @@
+{
+  "kind": "singleType",
+  "collectionName": "globals",
+  "info": {
+    "singularName": "global",
+    "pluralName": "globals",
+    "displayName": "Informations générales",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "instagram": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "default": "https://www.instagram.com/projetboussole/",
+      "required": true
+    },
+    "facebook": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "default": "https://www.facebook.com/ProjetBoussole",
+      "required": true
+    },
+    "linkedin": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "default": "https://www.linkedin.com/company/projet-boussole/",
+      "required": true
+    },
+    "address": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "default": "7 rue foucault, Clichy (Métro L13, Mairie de Clichy)",
+      "required": true
+    },
+    "phoneNumber": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "default": "+33 1 47 90 14 03",
+      "required": true
+    },
+    "email": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": "support@projetboussole.fr"
+    },
+    "copyright": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "default": "Copyright © Boussole 2024",
+      "required": true
+    },
+    "message_banners": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::message-banner.message-banner"
+    },
+    "newsletter": {
+      "displayName": "NewsletterForm",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "components.newsletter-form",
+      "required": true
+    },
+    "benefits": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blocks.benefits-section"
+    },
+    "appointment_url": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": "https://calendly.com/projet_boussole"
+    },
+    "opened_days": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "default": "Lundi au samedi",
+      "required": true
+    },
+    "opened_hours": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "default": "9h30 à 18h30",
+      "required": true
+    },
+    "google_reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::google-review.google-review"
+    },
+    "control_points": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::control-point.control-point"
+    }
+  }
+}

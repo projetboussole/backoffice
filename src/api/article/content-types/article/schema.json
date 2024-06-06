@@ -1,0 +1,119 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articles",
+  "info": {
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "Article",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "shortedDescription": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid",
+      "targetField": "title"
+    },
+    "timeToRead": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer",
+      "required": true,
+      "default": 0
+    },
+    "author": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::employee.employee"
+    },
+    "image": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "components.image-section"
+    },
+    "content": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "blocks.appointment-section",
+        "blocks.articles-section",
+        "blocks.blue-header-section",
+        "blocks.brands-section",
+        "blocks.categories-section",
+        "blocks.comparator-section",
+        "blocks.concept-section",
+        "blocks.control-points-section",
+        "blocks.google-reviews-section",
+        "blocks.header-faded-images",
+        "blocks.header-numeroted-cards",
+        "blocks.images-cloud-section",
+        "blocks.map-section",
+        "blocks.numbered-cards-section",
+        "blocks.partners-section",
+        "blocks.pricing-section",
+        "blocks.products-slider",
+        "blocks.questions-section",
+        "blocks.reviews-section",
+        "blocks.rich-text-section",
+        "blocks.squares-cloud-section",
+        "blocks.stocks-section",
+        "blocks.team-slider",
+        "blocks.three-cards-section",
+        "blocks.title-description-image-section",
+        "blocks.video-section",
+        "blocks.benefits-section",
+        "components.image-section"
+      ]
+    },
+    "recommended_articles": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blocks.recommanded-articles"
+    }
+  }
+}

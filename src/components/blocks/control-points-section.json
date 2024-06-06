@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_blocks_control_points_sections",
+  "info": {
+    "displayName": "ControlPointsSection",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Reconditionné et testé sur 30 points de contrôles par François",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "default": "Chez Boussole, chaque vélo est minutieusement scruté par nos mécaniciens 🧐Pas moins de 30 points de contrôle doivent être passés avec succès pour qu’un vélo sorte de notre atelier pour de nouvelles aventures !"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.button"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_blocks_recommanded_articles",
+  "info": {
+    "displayName": "RecommandedArticles",
+    "icon": "archive",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article"
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "Articles similaires"
+    }
+  }
+}

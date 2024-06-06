@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_blocks_products_sliders",
+  "info": {
+    "displayName": "ProductsSlider",
+    "icon": "arrowRight",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Tout beaux, tout chauds",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "default": "Des bolides fraîchement sortis de notre atelier, prêt à rugir à nouveau sur le bitume, prêts à être adopter :)",
+      "required": true
+    },
+    "collection": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::collection.collection"
+    }
+  }
+}
