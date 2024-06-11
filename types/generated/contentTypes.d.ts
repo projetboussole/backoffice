@@ -1517,6 +1517,7 @@ export interface ApiMessageBannerMessageBanner extends Schema.CollectionType {
     singularName: 'message-banner';
     pluralName: 'message-banners';
     displayName: 'MessageBanner';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1534,6 +1535,17 @@ export interface ApiMessageBannerMessageBanner extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    url: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    page: Attribute.Relation<
+      'api::message-banner.message-banner',
+      'oneToOne',
+      'api::page.page'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
