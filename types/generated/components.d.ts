@@ -514,7 +514,6 @@ export interface BlocksTitleDescriptionImageSection extends Schema.Component {
     sticker_position: Attribute.Enumeration<
       ['top_left', 'top_right', 'bottom_left', 'bottom_right']
     > &
-      Attribute.Required &
       Attribute.DefaultTo<'top_left'>;
   };
 }

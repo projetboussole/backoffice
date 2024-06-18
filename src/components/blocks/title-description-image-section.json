@@ -42,7 +42,7 @@
         "bottom_right"
       ],
       "default": "top_left",
-      "required": true
+      "required": false
     }
   }
 }
