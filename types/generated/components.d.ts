@@ -355,6 +355,7 @@ export interface BlocksProductsSlider extends Schema.Component {
       'oneToOne',
       'api::collection.collection'
     >;
+    metafields: Attribute.JSON & Attribute.Required;
   };
 }
 

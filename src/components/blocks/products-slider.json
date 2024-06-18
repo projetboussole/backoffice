@@ -21,6 +21,10 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::collection.collection"
+    },
+    "metafields": {
+      "type": "json",
+      "required": true
     }
   }
 }

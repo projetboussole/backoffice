@@ -24,63 +24,19 @@ const brandCollectionQuery = `
   }
 `;
 
-const productsSliderQuery = `
-  query ProductsSliderQuery($id: ID) {
-    collection(id: $id) {
-      products(first: 6, sortKey: CREATED, reverse: true) {
-        nodes {
-          id
-          title
-          handle
-          vendor
-          metafields(
-            identifiers: [{namespace: "custom", key: "taille"}, {namespace: "custom", key: "annee"}]
-          ) {
-            key
-            value
-          }
-          featuredImage {
-            url
-            id
-          }
-          images(first: 2) {
-            nodes {
-              url
-              id
-            }
-          }
-          compareAtPriceRange {
-            maxVariantPrice {
-              amount
-              currencyCode
-            }
-            minVariantPrice {
-              amount
-              currencyCode
-            }
-          }
-          priceRange {
-            maxVariantPrice {
-              amount
-              currencyCode
-            }
-            minVariantPrice {
-              amount
-              currencyCode
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
 /**
  * @param {any} id
+ * @param {any[]} metafields
  */
-async function getCollection(id) {
+async function getCollection(id, metafields) {
   const { data } = await client.request(productsSliderQuery, {
-    variables: { id: `gid://shopify/Collection/${id}` },
+    variables: {
+      id: `gid://shopify/Collection/${id}`,
+      identifiers:
+        metafields.length > 0
+          ? metafields.map((m) => ({ namespace: "custom", key: m }))
+          : undefined,
+    },
   });
   return data;
 }
@@ -101,19 +57,27 @@ module.exports = createCoreController("api::page.page", () => ({
 
     const item = data?.[0];
 
+    console.log({ item });
+
     const content =
       item?.attributes?.content && item.attributes.content.length > 0
         ? await Promise.all(
             item.attributes.content.map(
               async (
-                /** @type {{ __component: string; collection: { data: { attributes: { shopifyID: any; }; }; }; collections: any; }} */ section
+                /** @type {{ __component: string; collection: { data: { attributes: { shopifyID: any; }; }; }; metafields: any[]; collections: { data: any[]; }; }} */ section
               ) => {
                 if (
                   section.__component === "blocks.products-slider" &&
                   section?.collection?.data?.attributes?.shopifyID
                 ) {
                   const id = section.collection.data.attributes.shopifyID;
-                  const shopify = id ? await getCollection(id) : null;
+
+                  const metafields = section?.metafields || [];
+
+                  const shopify = id
+                    ? await getCollection(id, metafields)
+                    : null;
+
                   return {
                     ...section,
                     products: shopify?.collection?.products || [],
@@ -155,3 +119,52 @@ module.exports = createCoreController("api::page.page", () => ({
     };
   },
 }));
+
+const productsSliderQuery = `
+  query ProductsSliderQuery($id: ID, $identifiers: [HasMetafieldsIdentifier!] = [{namespace: "custom", key: "taille"}, {namespace: "custom", key: "annee"}]) {
+    collection(id: $id) {
+      products(first: 6, sortKey: CREATED, reverse: true) {
+        nodes {
+          id
+          title
+          handle
+          vendor
+          metafields(identifiers: $identifiers) {
+            key
+            value
+          }
+          featuredImage {
+            url
+            id
+          }
+          images(first: 2) {
+            nodes {
+              url
+              id
+            }
+          }
+          compareAtPriceRange {
+            maxVariantPrice {
+              amount
+              currencyCode
+            }
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+          }
+          priceRange {
+            maxVariantPrice {
+              amount
+              currencyCode
+            }
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+          }
+        }
+      }
+    }
+  }
+`;

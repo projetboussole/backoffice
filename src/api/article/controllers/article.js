@@ -7,8 +7,79 @@ const client = createStorefrontApiClient({
   publicAccessToken: "963489a685f158c6a0e499c449321340",
 });
 
+/**
+ * @param {any} id
+ * @param {any[]} metafields
+ */
+async function getCollection(id, metafields) {
+  const { data } = await client.request(productsSliderQuery, {
+    variables: {
+      id: `gid://shopify/Collection/${id}`,
+      identifiers:
+        metafields.length > 0
+          ? metafields.map((m) => ({ namespace: "custom", key: m }))
+          : undefined,
+    },
+  });
+  return data;
+}
+
+module.exports = createCoreController("api::article.article", () => ({
+  async find(ctx) {
+    const { data, meta } = await super.find(ctx);
+
+    const res =
+      data.length > 0
+        ? await Promise.all(
+            data.map(async (item) => {
+              const content =
+                item?.attributes?.content && item.attributes.content.length > 0
+                  ? await Promise.all(
+                      item.attributes.content.map(
+                        async (
+                          /** @type {{ __component: string; collection: { data: { attributes: { shopifyID: any; }; }; }; metafields: any[]; }} */ section
+                        ) => {
+                          if (
+                            section.__component === "blocks.products-slider" &&
+                            section?.collection?.data?.attributes?.shopifyID
+                          ) {
+                            const id =
+                              section.collection.data.attributes.shopifyID;
+                            const metafields = section?.metafields || [];
+
+                            const shopify = id
+                              ? await getCollection(id, metafields)
+                              : null;
+
+                            return {
+                              ...section,
+                              products: shopify?.collection?.products || [],
+                            };
+                          }
+
+                          return section;
+                        }
+                      )
+                    )
+                  : [];
+
+              return {
+                ...(item?.attributes || {}),
+                content,
+              };
+            })
+          )
+        : [];
+
+    return {
+      articles: res,
+      meta,
+    };
+  },
+}));
+
 const productsSliderQuery = `
-  query ProductsSliderQuery($id: ID) {
+  query ProductsSliderQuery($id: ID, $identifiers: [HasMetafieldsIdentifier!] = [{namespace: "custom", key: "taille"}, {namespace: "custom", key: "annee"}]) {
     collection(id: $id) {
       products(first: 6, sortKey: CREATED, reverse: true) {
         nodes {
@@ -16,9 +87,7 @@ const productsSliderQuery = `
           title
           handle
           vendor
-          metafields(
-            identifiers: [{namespace: "custom", key: "taille"}, {namespace: "custom", key: "annee"}]
-          ) {
+          metafields(identifiers: $identifiers) {
             key
             value
           }
@@ -57,62 +126,3 @@ const productsSliderQuery = `
     }
   }
 `;
-
-/**
- * @param {any} id
- */
-async function getCollection(id) {
-  const { data } = await client.request(productsSliderQuery, {
-    variables: { id: `gid://shopify/Collection/${id}` },
-  });
-  return data;
-}
-
-module.exports = createCoreController("api::article.article", () => ({
-  async find(ctx) {
-    const { data, meta } = await super.find(ctx);
-
-    const res =
-      data.length > 0
-        ? await Promise.all(
-            data.map(async (item) => {
-              const content =
-                item?.attributes?.content && item.attributes.content.length > 0
-                  ? await Promise.all(
-                      item.attributes.content.map(
-                        async (
-                          /** @type {{ __component: string; collection: { data: { attributes: { shopifyID: any; }; }; }; }} */ section
-                        ) => {
-                          if (
-                            section.__component === "blocks.products-slider" &&
-                            section?.collection?.data?.attributes?.shopifyID
-                          ) {
-                            const id =
-                              section.collection.data.attributes.shopifyID;
-                            const shopify = await getCollection(id);
-                            return {
-                              ...section,
-                              products: shopify?.collection?.products || [],
-                            };
-                          }
-
-                          return section;
-                        }
-                      )
-                    )
-                  : [];
-
-              return {
-                ...(item?.attributes || {}),
-                content,
-              };
-            })
-          )
-        : [];
-
-    return {
-      articles: res,
-      meta,
-    };
-  },
-}));
