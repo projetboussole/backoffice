@@ -36,6 +36,17 @@
       "type": "boolean",
       "default": false,
       "required": false
+    },
+    "color": {
+      "type": "enumeration",
+      "enum": [
+        "blue",
+        "yellow",
+        "red",
+        "pink"
+      ],
+      "default": "blue",
+      "required": true
     }
   }
 }

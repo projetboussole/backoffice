@@ -1,7 +1,8 @@
 {
   "collectionName": "components_blocks_title_description_image_sections",
   "info": {
-    "displayName": "TitleDescriptionImageSection"
+    "displayName": "TitleDescriptionImageSection",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -31,6 +32,17 @@
       "type": "component",
       "repeatable": false,
       "component": "components.image-section"
+    },
+    "sticker_position": {
+      "type": "enumeration",
+      "enum": [
+        "top_left",
+        "top_right",
+        "bottom_left",
+        "bottom_right"
+      ],
+      "default": "top_left",
+      "required": true
     }
   }
 }

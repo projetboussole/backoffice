@@ -152,6 +152,26 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::control-point.control-point"
+    },
+    "delivery_prices_IDF": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": "Livraison Ile de France 25€"
+    },
+    "delivery_prices_france": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "default": "Livraison toute France 49€",
+      "required": true
     }
   }
 }

@@ -74,6 +74,9 @@ export interface BlocksBlueHeaderSection extends Schema.Component {
     image: Attribute.Component<'components.image-section'> & Attribute.Required;
     sticker: Attribute.Component<'components.image-section'>;
     withContactForm: Attribute.Boolean & Attribute.DefaultTo<false>;
+    color: Attribute.Enumeration<['blue', 'yellow', 'red', 'pink']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'blue'>;
   };
 }
 
@@ -497,6 +500,7 @@ export interface BlocksTitleDescriptionImageSection extends Schema.Component {
   collectionName: 'components_blocks_title_description_image_sections';
   info: {
     displayName: 'TitleDescriptionImageSection';
+    description: '';
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
@@ -507,6 +511,11 @@ export interface BlocksTitleDescriptionImageSection extends Schema.Component {
       Attribute.DefaultTo<false>;
     button: Attribute.Component<'components.button'>;
     sticker: Attribute.Component<'components.image-section'>;
+    sticker_position: Attribute.Enumeration<
+      ['top_left', 'top_right', 'bottom_left', 'bottom_right']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'top_left'>;
   };
 }
 

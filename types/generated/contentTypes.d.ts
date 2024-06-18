@@ -1412,6 +1412,22 @@ export interface ApiGlobalGlobal extends Schema.SingleType {
       'oneToMany',
       'api::control-point.control-point'
     >;
+    delivery_prices_IDF: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Livraison Ile de France 25\u20AC'>;
+    delivery_prices_france: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Livraison toute France 49\u20AC'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
