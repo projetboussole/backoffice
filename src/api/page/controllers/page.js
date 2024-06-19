@@ -57,8 +57,6 @@ module.exports = createCoreController("api::page.page", () => ({
 
     const item = data?.[0];
 
-    console.log({ item });
-
     const content =
       item?.attributes?.content && item.attributes.content.length > 0
         ? await Promise.all(
