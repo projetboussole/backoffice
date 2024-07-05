@@ -356,6 +356,16 @@ export interface BlocksProductsSlider extends Schema.Component {
       'api::collection.collection'
     >;
     metafields: Attribute.JSON & Attribute.Required;
+    productsLength: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 6;
+          max: 50;
+        },
+        number
+      > &
+      Attribute.DefaultTo<6>;
   };
 }
 

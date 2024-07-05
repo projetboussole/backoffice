@@ -25,6 +25,13 @@
     "metafields": {
       "type": "json",
       "required": true
+    },
+    "productsLength": {
+      "type": "integer",
+      "required": true,
+      "max": 50,
+      "default": 6,
+      "min": 6
     }
   }
 }

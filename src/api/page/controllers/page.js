@@ -28,9 +28,10 @@ const brandCollectionQuery = `
  * @param {any} id
  * @param {any[]} metafields
  */
-async function getCollection(id, metafields) {
+async function getCollection(id, metafields, first) {
   const { data } = await client.request(productsSliderQuery, {
     variables: {
+      first,
       id: `gid://shopify/Collection/${id}`,
       identifiers:
         metafields.length > 0
@@ -71,9 +72,11 @@ module.exports = createCoreController("api::page.page", () => ({
                   const id = section.collection.data.attributes.shopifyID;
 
                   const metafields = section?.metafields || [];
+                  // @ts-ignore
+                  const productsLength = section?.productsLength || 6;
 
                   const shopify = id
-                    ? await getCollection(id, metafields)
+                    ? await getCollection(id, metafields, productsLength)
                     : null;
 
                   return {
@@ -119,9 +122,9 @@ module.exports = createCoreController("api::page.page", () => ({
 }));
 
 const productsSliderQuery = `
-  query ProductsSliderQuery($id: ID, $identifiers: [HasMetafieldsIdentifier!] = [{namespace: "custom", key: "taille"}, {namespace: "custom", key: "annee"}]) {
+  query ProductsSliderQuery($id: ID, $first: Int = 6, $identifiers: [HasMetafieldsIdentifier!] = [{namespace: "custom", key: "taille"}, {namespace: "custom", key: "annee"}]) {
     collection(id: $id) {
-      products(first: 6, sortKey: CREATED, reverse: true) {
+      products(first: $first, sortKey: CREATED, reverse: true) {
         nodes {
           id
           title
