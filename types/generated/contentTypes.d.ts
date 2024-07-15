@@ -1428,6 +1428,12 @@ export interface ApiGlobalGlobal extends Schema.SingleType {
         };
       }> &
       Attribute.DefaultTo<'Livraison toute France 49\u20AC'>;
+    seo: Attribute.Component<'components.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

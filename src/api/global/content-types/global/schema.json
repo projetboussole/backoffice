@@ -172,6 +172,17 @@
       "type": "string",
       "default": "Livraison toute France 49€",
       "required": true
+    },
+    "seo": {
+      "displayName": "Seo",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "components.seo"
     }
   }
 }

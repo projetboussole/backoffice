@@ -639,6 +639,18 @@ export interface ComponentsPricingCard extends Schema.Component {
   };
 }
 
+export interface ComponentsSeo extends Schema.Component {
+  collectionName: 'components_components_seos';
+  info: {
+    displayName: 'Seo';
+    icon: 'cube';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+  };
+}
+
 export interface ComponentsSquareBlock extends Schema.Component {
   collectionName: 'components_components_square_blocks';
   info: {
@@ -723,6 +735,7 @@ declare module '@strapi/types' {
       'components.informations': ComponentsInformations;
       'components.newsletter-form': ComponentsNewsletterForm;
       'components.pricing-card': ComponentsPricingCard;
+      'components.seo': ComponentsSeo;
       'components.square-block': ComponentsSquareBlock;
       'components.title-description-button': ComponentsTitleDescriptionButton;
       'components.title-description-image': ComponentsTitleDescriptionImage;
