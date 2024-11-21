@@ -4,7 +4,8 @@
   "info": {
     "singularName": "page-collection",
     "pluralName": "page-collections",
-    "displayName": "Page - Collection"
+    "displayName": "Page - Collection",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -53,6 +54,16 @@
         "blocks.video-section",
         "components.image-section"
       ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "layout.seo"
     }
   }
 }

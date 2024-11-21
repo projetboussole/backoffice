@@ -993,6 +993,12 @@ export interface ApiBlogBlog extends Schema.SingleType {
       'oneToOne',
       'api::article.article'
     >;
+    seo: Attribute.Component<'layout.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1690,6 +1696,7 @@ export interface ApiPageCollectionPageCollection extends Schema.SingleType {
     singularName: 'page-collection';
     pluralName: 'page-collections';
     displayName: 'Page - Collection';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1738,6 +1745,12 @@ export interface ApiPageCollectionPageCollection extends Schema.SingleType {
           localized: true;
         };
       }>;
+    seo: Attribute.Component<'layout.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1769,6 +1782,7 @@ export interface ApiPageNosCollectionPageNosCollection
     singularName: 'page-nos-collection';
     pluralName: 'page-nos-collections';
     displayName: 'Page - Nos collections';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1820,6 +1834,12 @@ export interface ApiPageNosCollectionPageNosCollection
         'components.image-section'
       ]
     > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'layout.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

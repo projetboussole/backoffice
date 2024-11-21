@@ -4,7 +4,8 @@
   "info": {
     "singularName": "page-nos-collection",
     "pluralName": "page-nos-collections",
-    "displayName": "Page - Nos collections"
+    "displayName": "Page - Nos collections",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -63,6 +64,16 @@
         "blocks.video-section",
         "components.image-section"
       ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "layout.seo"
     }
   }
 }
