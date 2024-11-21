@@ -406,6 +406,7 @@ export interface BlocksRecommandedArticles extends Schema.Component {
     title: Attribute.String &
       Attribute.Required &
       Attribute.DefaultTo<'Articles similaires'>;
+    seo: Attribute.Component<'layout.seo'>;
   };
 }
 
@@ -697,6 +698,28 @@ export interface ComponentsTitleDescriptionImage extends Schema.Component {
   };
 }
 
+export interface LayoutSeo extends Schema.Component {
+  collectionName: 'components_layout_seos';
+  info: {
+    displayName: 'Seo';
+    icon: 'briefcase';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 60;
+      }> &
+      Attribute.DefaultTo<'V\u00E9los Reconditionn\u00E9s - \u00C9conomiques et \u00C9cologiques | Boussole'>;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 155;
+      }> &
+      Attribute.DefaultTo<'Projet Boussole propose des v\u00E9los \u00E9lectriques ou classiques reconditionn\u00E9s par nos m\u00E9caniciens avec -30% \u00E0 -50% de remise et 1 an de garantie.'>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -739,6 +762,7 @@ declare module '@strapi/types' {
       'components.square-block': ComponentsSquareBlock;
       'components.title-description-button': ComponentsTitleDescriptionButton;
       'components.title-description-image': ComponentsTitleDescriptionImage;
+      'layout.seo': LayoutSeo;
     }
   }
 }

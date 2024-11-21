@@ -16,6 +16,11 @@
       "type": "string",
       "required": true,
       "default": "Articles similaires"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.seo"
     }
   }
 }

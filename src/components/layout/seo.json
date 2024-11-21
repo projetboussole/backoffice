@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_layout_seos",
+  "info": {
+    "displayName": "Seo",
+    "icon": "briefcase"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 60,
+      "required": true,
+      "default": "Vélos Reconditionnés - Économiques et Écologiques | Boussole"
+    },
+    "description": {
+      "type": "text",
+      "default": "Projet Boussole propose des vélos électriques ou classiques reconditionnés par nos mécaniciens avec -30% à -50% de remise et 1 an de garantie.",
+      "required": true,
+      "maxLength": 155
+    }
+  }
+}
