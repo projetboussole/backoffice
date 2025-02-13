@@ -1161,11 +1161,7 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
         'blocks.team-slider',
         'blocks.three-cards-section',
         'blocks.title-description-image-section',
-        'blocks.video-section',
-        'components.title-description-image',
-        'components.title-description-button',
-        'components.card',
-        'components.image-section'
+        'blocks.video-section'
       ]
     > &
       Attribute.SetPluginOptions<{
