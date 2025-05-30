@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_components_collection_form_components",
+  "info": {
+    "displayName": "CollectionFormComponent",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "questions": {
+      "displayName": "questions",
+      "type": "component",
+      "repeatable": true,
+      "component": "components.questions"
+    },
+    "button": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_components_collection_form_fields",
+  "info": {
+    "displayName": "CollectionFormField"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "params": {
+      "type": "json"
+    }
+  }
+}
