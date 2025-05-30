@@ -122,6 +122,19 @@ export interface BlocksCategoriesSection extends Schema.Component {
   };
 }
 
+export interface BlocksCollectionForm extends Schema.Component {
+  collectionName: 'components_blocks_collection_forms';
+  info: {
+    displayName: 'CollectionForm';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    questions: Attribute.Component<'components.collection-form-field', true>;
+    button: Attribute.String;
+  };
+}
+
 export interface BlocksComparatorSection extends Schema.Component {
   collectionName: 'components_blocks_comparator_sections';
   info: {
@@ -577,6 +590,30 @@ export interface ComponentsCard extends Schema.Component {
   };
 }
 
+export interface ComponentsCollectionFormComponent extends Schema.Component {
+  collectionName: 'components_components_collection_form_components';
+  info: {
+    displayName: 'CollectionFormComponent';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    questions: Attribute.Component<'components.questions', true>;
+    button: Attribute.String;
+  };
+}
+
+export interface ComponentsCollectionFormField extends Schema.Component {
+  collectionName: 'components_components_collection_form_fields';
+  info: {
+    displayName: 'CollectionFormField';
+  };
+  attributes: {
+    name: Attribute.String;
+    params: Attribute.JSON;
+  };
+}
+
 export interface ComponentsImageSection extends Schema.Component {
   collectionName: 'components_blocks_image_sections';
   info: {
@@ -640,6 +677,17 @@ export interface ComponentsPricingCard extends Schema.Component {
   };
 }
 
+export interface ComponentsQuestions extends Schema.Component {
+  collectionName: 'components_components_questions';
+  info: {
+    displayName: 'questions';
+  };
+  attributes: {
+    name: Attribute.String;
+    params: Attribute.JSON;
+  };
+}
+
 export interface ComponentsSeo extends Schema.Component {
   collectionName: 'components_components_seos';
   info: {
@@ -664,6 +712,8 @@ export interface ComponentsSquareBlock extends Schema.Component {
     emoji: Attribute.String;
     shopifyImageUrl: Attribute.String;
     button: Attribute.Component<'components.button'>;
+    isForm: Attribute.Boolean & Attribute.DefaultTo<false>;
+    questions: Attribute.JSON;
   };
 }
 
@@ -729,6 +779,7 @@ declare module '@strapi/types' {
       'blocks.blue-header-section': BlocksBlueHeaderSection;
       'blocks.brands-section': BlocksBrandsSection;
       'blocks.categories-section': BlocksCategoriesSection;
+      'blocks.collection-form': BlocksCollectionForm;
       'blocks.comparator-section': BlocksComparatorSection;
       'blocks.concept-section': BlocksConceptSection;
       'blocks.contact-section': BlocksContactSection;
@@ -754,10 +805,13 @@ declare module '@strapi/types' {
       'blocks.video-section': BlocksVideoSection;
       'components.button': ComponentsButton;
       'components.card': ComponentsCard;
+      'components.collection-form-component': ComponentsCollectionFormComponent;
+      'components.collection-form-field': ComponentsCollectionFormField;
       'components.image-section': ComponentsImageSection;
       'components.informations': ComponentsInformations;
       'components.newsletter-form': ComponentsNewsletterForm;
       'components.pricing-card': ComponentsPricingCard;
+      'components.questions': ComponentsQuestions;
       'components.seo': ComponentsSeo;
       'components.square-block': ComponentsSquareBlock;
       'components.title-description-button': ComponentsTitleDescriptionButton;

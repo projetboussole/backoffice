@@ -53,7 +53,8 @@
         "components.button",
         "components.image-section",
         "blocks.recommanded-articles",
-        "blocks.benefits-section"
+        "blocks.benefits-section",
+        "blocks.collection-form"
       ],
       "required": true
     },

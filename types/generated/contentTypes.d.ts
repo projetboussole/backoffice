@@ -999,6 +999,12 @@ export interface ApiBlogBlog extends Schema.SingleType {
           localized: true;
         };
       }>;
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1478,6 +1484,12 @@ export interface ApiGlobalGlobal extends Schema.SingleType {
           localized: true;
         };
       }>;
+    test_appointment_url: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1684,7 +1696,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'components.button',
         'components.image-section',
         'blocks.recommanded-articles',
-        'blocks.benefits-section'
+        'blocks.benefits-section',
+        'blocks.collection-form'
       ]
     > &
       Attribute.Required &
