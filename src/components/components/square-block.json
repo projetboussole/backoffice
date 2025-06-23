@@ -23,6 +23,13 @@
       "type": "component",
       "repeatable": false,
       "component": "components.button"
+    },
+    "isForm": {
+      "type": "boolean",
+      "default": false
+    },
+    "questions": {
+      "type": "json"
     }
   }
 }
