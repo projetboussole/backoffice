@@ -100,6 +100,17 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::employee.employee"
+    },
+    "product_tags_visibility": {
+      "displayName": "product_tags_visibility",
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "component": "components.tag-visibility"
     }
   }
 }

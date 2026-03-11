@@ -717,6 +717,20 @@ export interface ComponentsSquareBlock extends Schema.Component {
   };
 }
 
+export interface ComponentsTagVisibility extends Schema.Component {
+  collectionName: 'components_components_tag_visibility';
+  info: {
+    displayName: 'Tag Visibility';
+    icon: 'tag';
+    description: '';
+  };
+  attributes: {
+    key: Attribute.String & Attribute.Required;
+    label: Attribute.String;
+    enabled: Attribute.Boolean & Attribute.DefaultTo<true>;
+  };
+}
+
 export interface ComponentsTitleDescriptionButton extends Schema.Component {
   collectionName: 'components_common_title_description_buttons';
   info: {
@@ -814,6 +828,7 @@ declare module '@strapi/types' {
       'components.questions': ComponentsQuestions;
       'components.seo': ComponentsSeo;
       'components.square-block': ComponentsSquareBlock;
+      'components.tag-visibility': ComponentsTagVisibility;
       'components.title-description-button': ComponentsTitleDescriptionButton;
       'components.title-description-image': ComponentsTitleDescriptionImage;
       'layout.seo': LayoutSeo;

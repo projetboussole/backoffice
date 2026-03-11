@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_components_tag_visibility",
+  "info": {
+    "displayName": "Tag Visibility",
+    "icon": "tag",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "key": {
+      "type": "string",
+      "required": true
+    },
+    "label": {
+      "type": "string"
+    },
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}
