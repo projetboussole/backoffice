@@ -83,6 +83,15 @@
       "default": "Pour être bien équipé de la tête aux pieds, Boussole vous recommande aussi :",
       "required": true
     },
+    "similar_products_note": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "default": "Ne mettez pas un frein à votre recherche ! Des modèles similaires sont disponibles et cherchent une seconde vie. Toujours reconditionnés par nos mécaniciens et jusqu'à -60% vs neuf."
+    },
     "informations": {
       "displayName": "informations",
       "type": "component",
