@@ -75,6 +75,24 @@
         }
       },
       "component": "components.tag-visibility"
+    },
+    "savings_badge_enabled": {
+      "type": "boolean",
+      "default": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "savings_badge_template": {
+      "type": "string",
+      "default": "Économisez €{{amount}}",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
