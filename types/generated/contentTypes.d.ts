@@ -2177,6 +2177,15 @@ export interface ApiProductProduct extends Schema.SingleType {
       'oneToMany',
       'api::employee.employee'
     >;
+    product_tags_visibility: Attribute.Component<
+      'components.tag-visibility',
+      true
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
