@@ -1,5 +1,8 @@
 const { createCoreController } = require("@strapi/strapi").factories;
 const { createStorefrontApiClient } = require("@shopify/storefront-api-client");
+const {
+  buildProductMetafieldIdentifiers,
+} = require("../../../utils/shopify-metafields");
 
 const client = createStorefrontApiClient({
   apiVersion: "2024-04",
@@ -33,10 +36,7 @@ async function getCollection(id, metafields, first) {
     variables: {
       first,
       id: `gid://shopify/Collection/${id}`,
-      identifiers:
-        metafields.length > 0
-          ? metafields.map((m) => ({ namespace: "custom", key: m }))
-          : undefined,
+      identifiers: buildProductMetafieldIdentifiers(metafields),
     },
   });
   return data;
